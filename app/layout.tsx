@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Inter } from "next/font/google";
 import "./globals.css";
+import EmbedBridge from "@/components/EmbedBridge";
 
 const bebasNeue = Bebas_Neue({
   weight: "400",
@@ -31,6 +32,7 @@ export default function RootLayout({
     <html lang="en" className={`${bebasNeue.variable} ${inter.variable}`}>
       <body className="bg-navy text-white antialiased overflow-x-hidden">
         {children}
+        <EmbedBridge />
       </body>
     </html>
   );
