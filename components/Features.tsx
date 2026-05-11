@@ -268,7 +268,7 @@ export default function Features() {
                 className="text-xs font-semibold tracking-[0.3em] uppercase"
                 style={{ color: '#c9a227', fontFamily: 'var(--font-inter)' }}
               >
-                The VegasOffshore Advantage
+                The Cigar City Sports Advantage
               </span>
             </motion.div>
 
@@ -293,7 +293,7 @@ export default function Features() {
                   backgroundClip: 'text',
                 }}
               >
-                VEGASOFFSHORE
+                CIGARCITYSPORTS
               </span>
             </motion.h2>
 

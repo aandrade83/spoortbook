@@ -33,13 +33,13 @@ export default function Header({ username, activeSection, onBack, onLogout }: He
       {/* Left: Logo + brand + back button when in section */}
       <div className="flex items-center gap-3">
         <div className="relative w-8 h-8 shrink-0">
-          <Image src="/logo.png" alt="VegasOffshore" fill sizes="32px" className="object-contain" priority />
+          <Image src="/logo.png" alt="Cigar City Sports" fill sizes="32px" className="object-contain" priority />
         </div>
         <span
           className="text-white tracking-widest text-lg hidden sm:block"
           style={{ fontFamily: 'var(--font-bebas), Impact, sans-serif', letterSpacing: '0.15em' }}
         >
-          VEGASOFFSHORE
+          CIGARCITYSPORTS
         </span>
 
         {inSection && (

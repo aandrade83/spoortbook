@@ -14,7 +14,7 @@ interface AuthState {
 }
 
 type SectionData =
-  | { type: 'url';  url: string }
+  | { type: 'url';  url: string; authUrl?: string }
   | { type: 'form'; action: string; fields: Record<string, string> }
 
 
@@ -83,9 +83,9 @@ export default function LobbyPage() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username: auth.username, password: auth.password }),
         })
-        const json = await res.json() as { success: boolean; url?: string }
+        const json = await res.json() as { success: boolean; url?: string; authUrl?: string }
         if (!json.success || !json.url) throw new Error('casino_error')
-        data = { type: 'url', url: json.url }
+        data = { type: 'url', url: json.url, authUrl: json.authUrl }
 
       } else {
         data = {
@@ -183,7 +183,7 @@ export default function LobbyPage() {
                 }}
               >
                 {data.type === 'url'
-                  ? <IframeViewer url={data.url} title={section.toUpperCase()} />
+                  ? <IframeViewer url={data.url} authUrl={data.authUrl} title={section.toUpperCase()} />
                   : <IframeViewer form={{ action: data.action, fields: data.fields }} title={section.toUpperCase()} />
                 }
               </div>
