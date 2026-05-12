@@ -1,21 +1,35 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from "next/image";
+import Link from "next/link";
 
 const LANDINGS = [
   {
-    id: '1',
-    name: 'Landing 1',
-    title: 'Modern Sportsbook with Video Hero',
+    id: "1",
+    name: "Landing 1",
+    title: "Buckeye with LOBBY - Modern Sportsbook with Video Hero",
     description:
-      'Modern Landing with Video Hero Scrolling, Login and Internal Lobby. Just login once and jump between Cashier, Casino, Sportsbooks.',
+      "Modern Landing with Video Hero Scrolling, Login and Internal Lobby. Just login once and jump between Cashier, Casino, Sportsbooks.",
   },
-] as const
+  {
+    id: "2",
+    name: "Landing 2",
+    title: "Classic Sportsbook — Cashier Button",
+    description:
+      "Classic sportsbook landing. Logo auto-loads from site domain, Cashier button opens the partner cashier via API lookup, Login posts directly to the book.",
+  },
+  {
+    id: "3",
+    name: "Landing 3",
+    title: "Orange Neon — Carousel + Product Cards",
+    description:
+      "Dark orange neon theme with auto-carousel, Sportsbook/Casino/Racebook product cards, trust strip, and Cashier API lookup button.",
+  },
+] as const;
 
 export default function Home() {
   return (
     <main
       className="relative min-h-screen w-full overflow-hidden"
-      style={{ background: '#0a1228' }}
+      style={{ background: "#0a1228" }}
     >
       {/* Background image */}
       <Image
@@ -25,7 +39,7 @@ export default function Home() {
         priority
         sizes="100vw"
         className="object-cover"
-        style={{ objectPosition: 'center' }}
+        style={{ objectPosition: "center" }}
       />
 
       {/* Dim overlay for contrast on the right side where buttons sit */}
@@ -33,7 +47,7 @@ export default function Home() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'linear-gradient(to right, transparent 0%, transparent 50%, rgba(10,18,40,0.55) 75%, rgba(10,18,40,0.8) 100%)',
+            "linear-gradient(to right, transparent 0%, transparent 50%, rgba(10,18,40,0.55) 75%, rgba(10,18,40,0.8) 100%)",
         }}
       />
 
@@ -54,18 +68,21 @@ export default function Home() {
       <div className="relative z-10 min-h-screen flex items-center justify-end px-6 md:px-12 lg:px-20 py-20">
         <div
           className="w-full md:w-1/2 lg:w-2/5"
-          style={{ marginTop: '-250px', transform: 'translateX(50px)' }}
+          style={{ marginTop: "-250px", transform: "translateX(50px)" }}
         >
           <div className="mb-8 text-right">
             <span
               className="text-xs font-semibold tracking-[0.3em] uppercase"
-              style={{ color: '#ff7a30', fontFamily: 'var(--font-inter)' }}
+              style={{ color: "#ff7a30", fontFamily: "var(--font-inter)" }}
             >
               Available Landings
             </span>
             <h1
               className="text-4xl md:text-5xl text-white mt-2"
-              style={{ fontFamily: 'var(--font-bebas), Impact, sans-serif', letterSpacing: '0.05em' }}
+              style={{
+                fontFamily: "var(--font-bebas), Impact, sans-serif",
+                letterSpacing: "0.05em",
+              }}
             >
               SELECT A LANDING
             </h1>
@@ -78,24 +95,24 @@ export default function Home() {
                 href={`/landings/${l.id}`}
                 className="group relative flex flex-col gap-2 p-5 rounded-xl transition-all duration-300"
                 style={{
-                  background: 'rgba(10,18,40,0.7)',
-                  border: '1px solid rgba(255,122,48,0.35)',
-                  backdropFilter: 'blur(14px)',
-                  WebkitBackdropFilter: 'blur(14px)',
+                  background: "rgba(10,18,40,0.7)",
+                  border: "1px solid rgba(255,122,48,0.35)",
+                  backdropFilter: "blur(14px)",
+                  WebkitBackdropFilter: "blur(14px)",
                 }}
               >
                 <span
                   className="text-2xl text-white"
                   style={{
-                    fontFamily: 'var(--font-bebas), Impact, sans-serif',
-                    letterSpacing: '0.08em',
+                    fontFamily: "var(--font-bebas), Impact, sans-serif",
+                    letterSpacing: "0.08em",
                   }}
                 >
                   {l.name.toUpperCase()}
                 </span>
                 <span
                   className="text-xs"
-                  style={{ color: '#8892a4', fontFamily: 'var(--font-inter)' }}
+                  style={{ color: "#8892a4", fontFamily: "var(--font-inter)" }}
                 >
                   {l.title}
                 </span>
@@ -104,13 +121,13 @@ export default function Home() {
                 <div
                   className="absolute top-full left-0 right-0 mt-2 p-3 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 z-20"
                   style={{
-                    background: 'rgba(10,18,40,0.95)',
-                    border: '1px solid rgba(255,122,48,0.4)',
-                    backdropFilter: 'blur(14px)',
-                    fontFamily: 'var(--font-inter)',
-                    color: '#cbd5e1',
-                    fontSize: '12px',
-                    lineHeight: '1.5',
+                    background: "rgba(10,18,40,0.95)",
+                    border: "1px solid rgba(255,122,48,0.4)",
+                    backdropFilter: "blur(14px)",
+                    fontFamily: "var(--font-inter)",
+                    color: "#cbd5e1",
+                    fontSize: "12px",
+                    lineHeight: "1.5",
                   }}
                 >
                   {l.description}
@@ -119,7 +136,7 @@ export default function Home() {
                 {/* Hover glow */}
                 <span
                   className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                  style={{ boxShadow: '0 0 30px rgba(232,93,28,0.45)' }}
+                  style={{ boxShadow: "0 0 30px rgba(232,93,28,0.45)" }}
                 />
               </Link>
             ))}
@@ -127,5 +144,5 @@ export default function Home() {
         </div>
       </div>
     </main>
-  )
+  );
 }

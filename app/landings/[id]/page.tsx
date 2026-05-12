@@ -14,6 +14,18 @@ const LANDINGS: Record<string, {
     description:
       'Modern Landing with Video Hero Scrolling, Login and Internal Lobby. Just login once and jump between Cashier, Casino, Sportsbooks.',
   },
+  '2': {
+    name: 'Landing 2',
+    title: 'Classic Sportsbook — Cashier Button',
+    description:
+      'Classic sportsbook landing. Logo auto-loads from site domain, Cashier button opens the partner cashier via API lookup, Login posts directly to the book.',
+  },
+  '3': {
+    name: 'Landing 3',
+    title: 'Orange Neon — Carousel + Product Cards',
+    description:
+      'Dark orange neon theme with auto-carousel, Sportsbook/Casino/Racebook product cards, trust strip, and Cashier API lookup button.',
+  },
 }
 
 function buildSnippet(id: string) {
