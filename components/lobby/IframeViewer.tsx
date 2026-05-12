@@ -4,11 +4,13 @@ import { useEffect, useRef, useState } from 'react'
 
 interface UrlMode {
   url: string
+  authUrl?: string
   form?: never
 }
 
 interface FormMode {
   url?: never
+  authUrl?: never
   form: {
     action: string
     fields: Record<string, string>
@@ -19,20 +21,32 @@ type IframeViewerProps = (UrlMode | FormMode) & { title: string }
 
 const FRAME_ID = (title: string) => `iframe-${title.toLowerCase()}`
 
-export default function IframeViewer({ title, url, form }: IframeViewerProps) {
-  const formRef  = useRef<HTMLFormElement>(null)
+export default function IframeViewer({ title, url, authUrl, form }: IframeViewerProps) {
+  const formRef             = useRef<HTMLFormElement>(null)
   const [loaded, setLoaded] = useState(false)
-  const frameName = FRAME_ID(title)
+  const [authed, setAuthed] = useState(!authUrl)
+  const frameName           = FRAME_ID(title)
 
-  // Auto-submit the hidden form into the iframe on first mount
   useEffect(() => {
     if (form && formRef.current) {
       formRef.current.submit()
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
+  const showSpinner = !authed || !loaded
+
   return (
     <div className="relative w-full h-full">
+      {/* Hidden auth iframe — loads controller.php so the browser stores the casino session cookie */}
+      {authUrl && !authed && (
+        <iframe
+          src={authUrl}
+          title={`${title} auth`}
+          onLoad={() => setAuthed(true)}
+          style={{ display: 'none' }}
+        />
+      )}
+
       {/* Hidden form for POST-based login */}
       {form && (
         <form
@@ -48,8 +62,8 @@ export default function IframeViewer({ title, url, form }: IframeViewerProps) {
         </form>
       )}
 
-      {/* Loading spinner */}
-      {!loaded && (
+      {/* Loading spinner — visible while we auth and while the main iframe loads */}
+      {showSpinner && (
         <div
           className="absolute inset-0 flex flex-col items-center justify-center gap-4 z-10"
           style={{ background: '#050810' }}
@@ -67,15 +81,18 @@ export default function IframeViewer({ title, url, form }: IframeViewerProps) {
         </div>
       )}
 
-      <iframe
-        name={frameName}
-        src={url}
-        title={title}
-        onLoad={() => setLoaded(true)}
-        className="w-full h-full border-0"
-        allow="payment *; fullscreen *"
-        style={{ opacity: loaded ? 1 : 0 }}
-      />
+      {/* Main iframe — mounted only after auth completes (or immediately if no authUrl) */}
+      {authed && (
+        <iframe
+          name={frameName}
+          src={url}
+          title={title}
+          onLoad={() => setLoaded(true)}
+          className="w-full h-full border-0"
+          allow="payment *; fullscreen *"
+          style={{ opacity: loaded ? 1 : 0 }}
+        />
+      )}
 
       {loaded && (
         <a

@@ -32,13 +32,13 @@ export default function Footer() {
             className="flex items-center gap-3"
           >
             <div className="relative w-8 h-8 opacity-80">
-              <Image src="/logo.png" alt="VegasOffshore" fill className="object-contain" />
+              <Image src="/logo.png" alt="Cigar City Sports" fill className="object-contain" />
             </div>
             <span
               className="text-base tracking-widest text-white/70"
               style={{ fontFamily: 'var(--font-bebas), Impact, sans-serif', letterSpacing: '0.18em' }}
             >
-              VEGASOFFSHORE
+              CIGARCITYSPORTS
             </span>
           </motion.div>
 
@@ -83,13 +83,13 @@ export default function Footer() {
             className="text-xs"
             style={{ color: '#4a5568', fontFamily: 'var(--font-inter)' }}
           >
-            © 2026 VegasOffshore. All rights reserved.
+            © 2026 Cigar City Sports. All rights reserved.
           </p>
           <p
             className="text-xs max-w-lg leading-relaxed"
             style={{ color: '#2d3748', fontFamily: 'var(--font-inter)' }}
           >
-            Must be 21+ to wager. Gambling problem? Call 1-800-522-4700. VegasOffshore is for entertainment purposes only.
+            Must be 21+ to wager. Gambling problem? Call 1-800-522-4700. Cigar City Sports is for entertainment purposes only.
           </p>
         </div>
       </div>

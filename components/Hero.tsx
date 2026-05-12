@@ -237,22 +237,6 @@ export default function Hero() {
             className="flex flex-col sm:flex-row items-center gap-4 mt-8"
           >
             <motion.a
-              href="#"
-              whileHover={{ scale: 1.04, boxShadow: '0 0 35px rgba(201,162,39,0.65)' }}
-              whileTap={{ scale: 0.97 }}
-              className="w-full sm:w-auto px-8 py-4 text-sm font-bold rounded-md tracking-wider uppercase"
-              style={{
-                background: 'linear-gradient(135deg, #c9a227, #e8c14a)',
-                color: '#050810',
-                boxShadow: '0 0 25px rgba(201,162,39,0.42)',
-                fontFamily: 'var(--font-inter)',
-                minWidth: '160px',
-              }}
-            >
-              Join Now
-            </motion.a>
-
-            <motion.a
               href="tel:8669218362"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}

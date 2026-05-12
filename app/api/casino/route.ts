@@ -1,6 +1,6 @@
 import type { NextRequest } from 'next/server'
 
-const CASINO_BASE = process.env.CASINO_BASE_URL!
+const CASINO_BASE = process.env.CASINO_BASE_URL!.replace(/\/$/, '')
 
 export async function POST(request: NextRequest) {
   let username: string
@@ -24,6 +24,8 @@ export async function POST(request: NextRequest) {
     password: password,
   })
 
-  const url = `${CASINO_BASE}/control/modules/login/controller.php?${params}`
-  return Response.json({ success: true, url })
+  const authUrl = `${CASINO_BASE}/control/modules/login/controller.php?${params}`
+  const url     = `${CASINO_BASE}/`
+
+  return Response.json({ success: true, authUrl, url })
 }

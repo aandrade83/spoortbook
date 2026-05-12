@@ -134,7 +134,7 @@ const stats = [
     ),
     value: '10K+',
     label: 'Trusted Players',
-    description: 'A growing community of serious bettors who trust VegasOffshore with their action.',
+    description: 'A growing community of serious bettors who trust Cigar City Sports with their action.',
     accentColor: 'blue',
   },
 ]
@@ -182,7 +182,7 @@ export default function Stats() {
               className="text-xs font-semibold tracking-[0.3em] uppercase"
               style={{ color: '#0066ff', fontFamily: 'var(--font-inter)' }}
             >
-              Why VegasOffshore
+              Why Cigar City Sports
             </span>
             <span className="h-px w-8" style={{ background: '#0066ff', opacity: 0.6 }} />
           </motion.div>
