@@ -60,7 +60,7 @@ function NavLoginForm({ compact = false }: { compact?: boolean }) {
     if (result.ok) {
       sessionStorage.setItem('lobbyUser', username)
       sessionStorage.setItem('lobbyPass', password)
-      router.push('/lobby')
+      router.push('/1/lobby')
     } else {
       setError(result.message ?? 'Invalid credentials')
       passRef.current!.value = ''

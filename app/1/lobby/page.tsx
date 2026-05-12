@@ -1,10 +1,10 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Header from '@/components/lobby/Header'
-import LoginForm from '@/components/lobby/LoginForm'
-import Lobby from '@/components/lobby/Lobby'
-import IframeViewer from '@/components/lobby/IframeViewer'
+import Header from '@/components/landings/1/lobby/Header'
+import LoginForm from '@/components/landings/1/lobby/LoginForm'
+import Lobby from '@/components/landings/1/lobby/Lobby'
+import IframeViewer from '@/components/landings/1/lobby/IframeViewer'
 
 type Section = 'lobby' | 'cashier' | 'casino' | 'sportsbook'
 
