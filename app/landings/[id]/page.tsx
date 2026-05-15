@@ -51,6 +51,11 @@ function buildSnippet(id: string) {
     border: 0;
     display: block;
   }
+  #ccs-embed {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+  }
   #vrb-landing-loader {
     position: fixed;
     inset: 0;
@@ -97,7 +102,7 @@ function buildSnippet(id: string) {
   src="https://landing.vrbmarketing.com/embed.js"
   data-landing="${id}"
   data-site="YOUR-SITE-DOMAIN-HERE"
-  data-height="100%"
+  data-height="100vh"
   async
   onerror="vrbShowOriginalSite();">
 </script>
