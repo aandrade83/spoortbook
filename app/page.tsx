@@ -23,6 +23,13 @@ const LANDINGS = [
     description:
       "Dark orange neon theme with auto-carousel, Sportsbook/Casino/Racebook product cards, trust strip, and Cashier API lookup button.",
   },
+  {
+    id: "4",
+    name: "Landing 4",
+    title: "PPH Classic — Local Carousel + Cashier",
+    description:
+      "Classic black/red sportsbook style with a local image carousel (NBA, Baseball, NHL, Casino, Horses), Cashier API lookup, and direct login to the book.",
+  },
 ] as const;
 
 export default function Home() {

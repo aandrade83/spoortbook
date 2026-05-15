@@ -31,6 +31,9 @@
     if (e.data.type === 'ccs:open-external') {
       window.open(origin + (e.data.path || '/'), '_blank', 'noopener,noreferrer');
     }
+    if (e.data.type === 'ccs:ready') {
+      if (typeof window.vrbLandingLoaded === 'function') window.vrbLandingLoaded();
+    }
   });
 
   window.CCS = {

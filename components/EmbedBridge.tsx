@@ -13,7 +13,11 @@ function Bridge() {
 
   useEffect(() => {
     const fromQuery = sp.get('embed') === '1'
-    if (fromQuery) sessionStorage.setItem('ccs_embed', '1')
+    if (fromQuery) {
+      sessionStorage.setItem('ccs_embed', '1')
+      // Signal the parent frame that the landing has mounted and rendered
+      window.parent.postMessage({ type: 'ccs:ready' }, '*')
+    }
 
     const site = sp.get('site')
     if (site) sessionStorage.setItem('ccs_site', site)

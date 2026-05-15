@@ -26,32 +26,82 @@ const LANDINGS: Record<string, {
     description:
       'Dark orange neon theme with auto-carousel, Sportsbook/Casino/Racebook product cards, trust strip, and Cashier API lookup button.',
   },
+  '4': {
+    name: 'Landing 4',
+    title: 'PPH Classic — Local Carousel + Cashier',
+    description:
+      'Classic black/red sportsbook style with a local image carousel (NBA, Baseball, NHL, Casino, Horses), Cashier API lookup, and direct login to the book.',
+  },
 }
 
 function buildSnippet(id: string) {
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- ⬇️ Change to your site's title -->
-  <title>YOUR SITE NAME HERE</title>
-  <style>
-    html, body { margin: 0; padding: 0; height: 100%; background: #050810; overflow: hidden; }
-    #ccs-embed, #ccs-embed > iframe { width: 100vw; height: 100vh; display: block; border: 0; }
-  </style>
-</head>
-<body>
+  return `<!-- VRB LANDING EMBED START -->
+<style>
+  #vrb-landing-wrapper {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999;
+    background: #050810;
+  }
+  #vrb-landing-wrapper iframe {
+    width: 100vw;
+    height: 100vh;
+    border: 0;
+    display: block;
+  }
+  #vrb-landing-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 999998;
+    background: #050810;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+  }
+</style>
+
+<div id="vrb-landing-loader">Loading...</div>
+<div id="vrb-landing-wrapper">
   <div id="ccs-embed"></div>
-  <script
-    src="https://landing.vrbmarketing.com/embed.js"
-    data-landing="${id}"
-    data-site="YOUR-SITE-DOMAIN-HERE"
-    data-height="100%"
-    async></script>
-</body>
-</html>
-`
+</div>
+
+<script>
+  window.VRB_LANDING_READY = false;
+
+  function vrbShowOriginalSite() {
+    document.getElementById('vrb-landing-wrapper').style.display = 'none';
+    document.getElementById('vrb-landing-loader').style.display = 'none';
+    document.documentElement.style.overflow = 'auto';
+    document.body.style.overflow = 'auto';
+  }
+
+  window.vrbLandingLoaded = function () {
+    if (window.VRB_LANDING_READY) return;
+    window.VRB_LANDING_READY = true;
+    document.getElementById('vrb-landing-loader').style.display = 'none';
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+  };
+
+  setTimeout(function () {
+    if (!window.VRB_LANDING_READY) vrbShowOriginalSite();
+  }, 8000);
+</script>
+
+<script
+  src="https://landing.vrbmarketing.com/embed.js"
+  data-landing="${id}"
+  data-site="YOUR-SITE-DOMAIN-HERE"
+  data-height="100%"
+  async
+  onerror="vrbShowOriginalSite();">
+</script>
+<!-- VRB LANDING EMBED END -->`
 }
 
 export default async function LandingDetail({ params }: { params: Promise<{ id: string }> }) {
@@ -156,12 +206,19 @@ export default async function LandingDetail({ params }: { params: Promise<{ id: 
             <CopyButton text={snippet} />
           </div>
           <p
+            className="text-xs mb-1"
+            style={{ color: '#e2e8f0', fontFamily: 'var(--font-inter)', fontWeight: 600 }}
+          >
+            Do not replace your existing <code style={{ color: '#ff7a30' }}>index.html</code>.
+            Add this block right before the closing <code style={{ color: '#ff7a30' }}>&lt;/body&gt;</code> tag in your current file.
+          </p>
+          <p
             className="text-xs mb-3"
             style={{ color: '#8892a4', fontFamily: 'var(--font-inter)' }}
           >
-            Replace <code style={{ color: '#ff7a30' }}>YOUR SITE NAME HERE</code> with your site title and{' '}
-            <code style={{ color: '#ff7a30' }}>YOUR-SITE-DOMAIN-HERE</code> with your domain (e.g.{' '}
-            <code>cigarcitysportshq.com</code>).
+            Replace <code style={{ color: '#ff7a30' }}>YOUR-SITE-DOMAIN-HERE</code> with your domain (e.g.{' '}
+            <code>pph.ag</code>). Your original site stays intact as a fallback — if our landing server is
+            unreachable, visitors will see your original site instead of a blank page.
           </p>
           <pre
             className="overflow-x-auto p-5 rounded-lg text-xs leading-relaxed"
